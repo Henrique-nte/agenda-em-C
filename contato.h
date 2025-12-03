@@ -3,8 +3,8 @@
 
 typedef struct
 {
-  char nome[50];
-  int idade;
+    char name[50];
+    int age;
 } Contato;
 
 #endif

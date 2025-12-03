@@ -2,16 +2,14 @@
 // ESTUDANTES: HENRIQUE S., YAGO,YURI, GABRIEL FLÔR, EMANOEl.
 
 // BIBLIOTECAS UTILIZADAS
-#include <unistd.h>
-// #include <windows.h> //No windows
-
-#include <stdio.h>
-#include <stdlib.h>
+#include <unistd.h>  // #include <windows.h> //No windows
+#include <stdio.h>   //Lib Padrão
+#include <stdlib.h>  //Lib Padrão
 #include "contato.h" //Incluo o struct Contato que criei em outro arquivo
 #include <string.h>  //Biblioteca de string
 
-#define QTD 10  // Quantidade de contatos possíveis
-int usados = 1; // Defino uma variavél global para saber a quantidade de posicoes do meu array Contatos
+#define QTD 10 // Quantidade de contatos possíveis
+int used = 1;  // Defino uma variavél global para saber a quantidade de posicoes do meu array Contatos
 
 // Função que mostra o menu e retorna a opção escolhida pelo usuário
 int show_Menu()
@@ -20,13 +18,13 @@ int show_Menu()
     int opc;
 
     printf(" ____________________MENU___________________ \n");
-    printf("|                                           |\n");
-    printf("|1 - CONSULTAR CONTATO");
-    printf("\t|3 - EXCLUIR CONTATO|\n");
-    printf("|2 - INCLUIR CONTATO");
-    printf("\t|4 - SAIR\t    |\n");
+    printf("|                                             |\n");
+    printf("|1 - CONSULTAR CONTATOS");
+    printf(" |3 - EXCLUIR CONTATOS |\n");
+    printf("|2 - INCLUIR CONTATOS");
+    printf("\t|4 - SAIR\t      |\n");
 
-    printf("Opcao: ");
+    printf("\nOpcao: ");
     fgets(temp, 10, stdin);
     opc = atoi(temp);
 
@@ -38,59 +36,59 @@ void show_Contats(Contato *c)
 {
     system("clear"); // Clear para Linux
 
-    printf("---Dados---\n");
-    for (int i = 0; i < usados; i++)
+    printf("----Lista de Contatos----\n\n");
+    for (int i = 0; i < used; i++)
     {
         printf("---CONTATO %i---\n", i + 1);
-        printf("Nome: %s\n", c[i].nome);
-        printf("Idade: %i\n", c[i].idade);
+        printf("Nome: %s\n", c[i].name);
+        printf("Idade: %i\n", c[i].age);
     }
 }
 
 // FUNCÃO ADICIONAR CONTATO
 
-int contact_Exists(char nome[], Contato *c)
+int contact_Exists(char name[], Contato *c)
 {
     // Verifica se já existe no array
-    for (int i = 0; i < usados; i++)
+    for (int i = 0; i < used; i++)
     {
-        if (strcmp(c[i].nome, nome) == 0)
+        if (strcmp(c[i].name, name) == 0)
 
             return 1; // True
     }
     return 0; // False
 }
 
-void add_contato(char nome[], int idade, Contato *c)
+void add_Contacts(char name[], int age, Contato *c)
 {
 
-    strcpy(c[usados].nome, nome);
-    c[usados].idade = idade;
+    strcpy(c[used].name, name);
+    c[used].age = age;
 
-    usados++;
-    printf("Contato '%s' adicionado a lista de contatos!!\n", nome);
+    used++;
+    printf("Contato '%s' adicionado a lista de contatos!!\n", name);
 
     sleep(2); // No Linux é segundos, Windows: milisegundos
 
     show_Contats(c);
 };
 
-void delete_Contact(char nome[], Contato *c)
+void delete_Contact(char name[], Contato *c)
 {
     // Procura no array
-    for (int i = 0; i < usados; i++)
+    for (int i = 0; i < used; i++)
     {
-        if (strcmp(c[i].nome, nome) == 0)
+        if (strcmp(c[i].name, name) == 0)
         {
 
             // Reorganizar array
-            for (int j = i + 1; j < usados; j++)
+            for (int j = i + 1; j < used; j++)
             {
                 c[j - 1] = c[j];
             }
 
-            usados--;
-            printf("'%s' foi excluido(a) da sua lista de contatos!!\n", nome);
+            used--;
+            printf("'%s' foi excluido(a) da sua lista de contatos!!\n", name);
             sleep(2); // No Linux é segundos, Windows: milisegundos
             show_Contats(c);
         }
@@ -100,8 +98,8 @@ void delete_Contact(char nome[], Contato *c)
 // FUNÇÃO PRINCIPAL
 int main(void)
 {
-    int opc = 0, idade = 0, exist;
-    char temp[10], nome[50];
+    int opc = 0, age = 0, exist;
+    char temp[10], name[50];
     Contato c[QTD] = {{"Ana Clara", 19}};
 
     while (opc != 4)
@@ -131,10 +129,10 @@ int main(void)
             {
                 printf("----Inclusão de contatos-----\n");
                 printf("Nome do novo contato: ");
-                fgets(nome, 50, stdin);
-                nome[strcspn(nome, "\n")] = '\0'; // remove o \n
+                fgets(name, 50, stdin);
+                name[strcspn(name, "\n")] = '\0'; // remove o \n
 
-                exist = contact_Exists(nome, c);
+                exist = contact_Exists(name, c);
 
                 if (exist)
                 {
@@ -146,10 +144,10 @@ int main(void)
 
             printf("Digite a idade: ");
             fgets(temp, 10, stdin);
-            idade = atoi(temp);
+            age = atoi(temp);
 
             // Adiciona no array
-            add_contato(nome, idade, c);
+            add_Contacts(name, age, c);
             break;
         case 3:
             // Deletar
@@ -157,10 +155,10 @@ int main(void)
             {
                 printf("----Exclusão de contatos-----\n");
                 printf("Nome do contato: ");
-                fgets(nome, 50, stdin);
-                nome[strcspn(nome, "\n")] = '\0'; // remove o \n
+                fgets(name, 50, stdin);
+                name[strcspn(name, "\n")] = '\0'; // remove o \n
 
-                exist = contact_Exists(nome, c);
+                exist = contact_Exists(name, c);
 
                 if (!exist)
                 {
@@ -171,8 +169,7 @@ int main(void)
             } while (exist == 0);
 
             // Adiciona no array
-            delete_Contact(nome, c);
-            break;
+            delete_Contact(name, c);
             break;
         default:
             break;
