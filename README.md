@@ -1,6 +1,6 @@
 # Meu Projeto em C
 
-Este é um projeto desenvolvido em linguagem C para estudo.
+Este projeto consiste no desenvolvimento de um programa em **Linguagem C ANSI** para gerenciar uma **agenda de contatos**, permitindo armazenar nome e telefone, além de consultar e excluir registros conforme solicitado no enunciado da atividade.
 
 ## Como compilar
 
