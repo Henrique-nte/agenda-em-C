@@ -1,2 +1,16 @@
-output/
+# binários
+*.exe
+*.out
+*.o
+
+# build folder
+build/
+
+# arquivos temporários
+*.log
+*.tmp
+
+# IDEs
 .vscode/
+.idea/
+output/
