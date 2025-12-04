@@ -168,7 +168,7 @@ int main(void)
 
             } while (exist == 0);
 
-            // Adiciona no array
+            // Deleta no array
             delete_Contact(name, c);
             break;
         default:
