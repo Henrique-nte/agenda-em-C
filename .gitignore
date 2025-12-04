@@ -6,6 +6,8 @@
 # build folder
 build/
 
+tests/
+
 # arquivos temporários
 *.log
 *.tmp
