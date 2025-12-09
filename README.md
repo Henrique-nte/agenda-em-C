@@ -14,6 +14,18 @@ Este projeto consiste no desenvolvimento de um programa em **Linguagem C ANSI** 
 
 ### Linux / macOS
 
+# Compilar
 ```bash
 make
 ```
+# Executar
+```bash
+make run
+```
+# Limpar binário
+# Executar
+```bash
+make clean
+```
+
+
