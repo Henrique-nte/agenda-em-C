@@ -27,7 +27,7 @@ void delete_Contact_Logic(Contato *contatos)
     {
 
         printf("|=======================================================|\n");
-        printf("|               EXCLUIR CONTATO                         |\n");
+        printf("|                   EXCLUIR CONTATO                     |\n");
         printf("|=======================================================|\n\n");
 
         printf("NOME: ");
@@ -40,8 +40,9 @@ void delete_Contact_Logic(Contato *contatos)
         {
             system(clear_Command);
             printf("|=======================================================|\n");
-            printf("|        ERRO: CONTATO NAO ENCONTRADO                   |\n");
+            printf("|          ERRO: CONTATO NAO ENCONTRADO                 |\n");
             printf("|=======================================================|\n\n");
+            return;
         }
 
     } while (exist == 0);

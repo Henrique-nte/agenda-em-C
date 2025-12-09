@@ -29,7 +29,7 @@ int validate_Name(char *name)
 int validate_Phone(char *phone)
 {
     // Define limites razoáveis para telefones (ex: 8 dígitos para fixo simples, até 14/15 com DDI e máscara)
-    if (strlen(phone) < 8 || strlen(phone) >= 16) // Ajustei o limite superior ligeiramente
+    if (strlen(phone) < 8 || strlen(phone) >= 16)
         return false;
 
     size_t len = strlen(phone);

@@ -14,16 +14,16 @@ void show_Contacts(Contato *c)
     system(clear_Command);
 
     printf("|=======================================================|\n");
-    printf("|              LISTA DE CONTATOS                        |\n");
+    printf("|                  LISTA DE CONTATOS                    |\n");
     printf("|=======================================================|\n\n");
 
     for (int i = 0; i < used; i++)
     {
         printf("|=======================================================|\n");
-        printf("|               CONTATO %i                               |\n", i + 1);
+        printf("|                     CONTATO %i                         |\n", i + 1);
         printf("|-------------------------------------------------------|\n");
-        printf("| Nome: %-38s|\n", c[i].name);
-        printf("| Telefone: %-34s|\n", c[i].phone);
+        printf("| Nome: %-48s|\n", c[i].name);
+        printf("| Telefone: %-44s|\n", c[i].phone);
         printf("|=======================================================|\n\n");
     }
 }
@@ -32,7 +32,7 @@ void show_Contacts(Contato *c)
 int contact_Exists(char name[], Contato *c)
 {
 
-       // Verifica se já existe no array
+    // Verifica se já existe no array
     for (int i = 0; i < used; i++)
     {
         if (strcmp(c[i].name, name) == 0)
@@ -48,6 +48,7 @@ void add_Contact(char name[], char phone[], Contato *c)
     strcpy(c[used].phone, phone);
 
     used++;
+    system(clear_Command);
     printf("|=======================================================|\n");
     printf(" '%s' ADICIONADO(A) À LISTA DE CONTATOS!             \n", name);
     printf("|=======================================================|\n\n");
@@ -60,7 +61,6 @@ void add_Contact(char name[], char phone[], Contato *c)
 // Deleta no array e organiza
 void delete_Contact(char name[], Contato *c)
 {
-
     // Procura no array
     for (int i = 0; i < used; i++)
     {
@@ -92,10 +92,10 @@ void find_contact_by_name(char name[], Contato *c)
         {
             system(clear_Command);
             printf("|=======================================================|\n");
-            printf("|                CONTATO %i                             |\n", i + 1);
-            printf("|=======================================================|\n\n");
-            printf("| Nome: %-38s|\n", c[i].name);
-            printf("| Telefone: %-34s|\n", c[i].phone);
+            printf("|                      CONTATO %i                        |\n", i + 1);
+            printf("|=======================================================|\n");
+            printf("| Nome: %-48s|\n", c[i].name);
+            printf("| Telefone: %-44s|\n", c[i].phone);
 
             return;
         }
@@ -104,7 +104,7 @@ void find_contact_by_name(char name[], Contato *c)
         {
             system(clear_Command);
             printf("|=======================================================|\n");
-            printf("|             CONTATO NAO ENCONTRADO                    |\n");
+            printf("|                 CONTATO NAO ENCONTRADO                |\n");
             printf("|=======================================================|\n\n");
         }
     }

@@ -37,7 +37,7 @@ void runApp()
             {
                 system(clear_Command);
                 printf("|=======================================================|\n");
-                printf("|                LISTA VAZIA!!                          |\n");
+                printf("|                     LISTA VAZIA!!                     |\n");
                 printf("|=======================================================|\n\n");
                 break;
             }
@@ -49,14 +49,14 @@ void runApp()
             {
                 system(clear_Command);
                 printf("|=======================================================|\n");
-                printf("|                LISTA VAZIA!!                          |\n");
+                printf("|                     LISTA VAZIA!!                     |\n");
                 printf("|=======================================================|\n\n");
                 break;
             }
 
             system(clear_Command);
             printf("|=======================================================|\n");
-            printf("|               DIGITE O CONTATO                        |\n");
+            printf("|                   DIGITE O CONTATO                    |\n");
             printf("|=======================================================|\n\n");
             printf("Nome: ");
             fgets(name, sizeof(name), stdin);
@@ -75,7 +75,7 @@ void runApp()
             {
                 system(clear_Command);
                 printf("|=======================================================|\n");
-                printf("|                LISTA VAZIA!!                          |\n");
+                printf("|                     LISTA VAZIA!!                     |\n");
                 printf("|=======================================================|\n\n");
                 break;
             }
@@ -87,14 +87,14 @@ void runApp()
         case 5:
             system(clear_Command);
             printf("|====================================|\n");
-            printf("|         ATE LOGO!!                 |\n");
+            printf("|              ATE LOGO!!            |\n");
             printf("|====================================|\n");
             return;
 
         default:
             system(clear_Command);
             printf("|=======================================================|\n");
-            printf("|               OPCAO INVALIDA!!                        |\n");
+            printf("|                    OPCAO INVALIDA!!                   |\n");
             printf("|=======================================================|\n\n");
             break;
         }

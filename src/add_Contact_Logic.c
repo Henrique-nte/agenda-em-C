@@ -15,64 +15,65 @@ extern char clear_Command[];
 // Repete até o usuário digitar um contato que não existe
 void add_Contact_Logic(Contato *contatos)
 {
-    char name[50], phone[15];
-    int opc, exist;
-    bool ok;
+    char name[50], phone[17];
+    int opc, exist = true;
+    bool ok = false;
 
-    do
+    while (exist != false) // Enquanto oque ele digitar ja estiver no array
     {
         do // Repete até ele digitar um nome válido
         {
             printf("|=======================================================|\n");
-            printf("|               ADICIONAR CONTATO                       |\n");
+            printf("|                   ADICIONAR CONTATO                   |\n");
             printf("|=======================================================|\n\n");
             printf("NOME: ");
             fgets(name, sizeof(name), stdin);
             name[strcspn(name, "\n")] = '\0'; // remove o \n
 
             if (validate_Name(name))
+            {
                 ok = true;
-            else if (!validate_Name(name))
+                system(clear_Command);
+            }
+
+            if (!validate_Name(name))
             {
                 system(clear_Command);
                 printf("|=======================================================|\n");
-                printf("|               NOME INVALIDO!!                         |\n");
+                printf("|                 ERRO: NOME INVALIDO!!                 |\n");
                 printf("|=======================================================|\n\n");
-                ok = false;
             }
-
         } while (ok != true);
-
-        // Quando valida nome reseta a varivel ok
-        if (ok)
-            ok = false;
 
         exist = contact_Exists(name, contatos);
         if (exist)
         {
             system(clear_Command);
             printf("|=======================================================|\n");
-            printf("|         ERRO: CONTATO JA EXISTE!                      |\n");
+            printf("|             ERRO: CONTATO JA EXISTE!                  |\n");
             printf("|=======================================================|\n\n");
+            return;
         }
-    } while (exist != 0); // Enquanto oque ele digitar ja estiver no array
+    }
+
+    ok = false; // reseta a variavel ok
 
     while (ok != true) // Repete até ele digitar um numero válido
     {
+        printf("NOME: %s\n", name);
         printf("TELEFONE: ");
         fgets(phone, sizeof(phone), stdin);
         phone[strcspn(phone, "\n")] = '\0'; // remove o \n
 
         if (validate_Phone(phone))
             ok = true;
-        else if (!validate_Phone(phone))
+
+        if (!validate_Phone(phone))
         {
             system(clear_Command);
             printf("|=======================================================|\n");
-            printf("|           ERRO: NUMERO INVALIDO                       |\n");
+            printf("|                ERRO: NUMERO INVALIDO                  |\n");
             printf("|=======================================================|\n\n");
-            // printf("Número tem que ter mais de 8 digitos!!\n");
-            ok = false;
         }
     }
 
